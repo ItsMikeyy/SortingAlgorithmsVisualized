@@ -1,7 +1,6 @@
 let rectArray = []
 let tmpArray = []
 
-document.getElementById("generate").addEventListener("click", createArray)
 document.getElementById("run").addEventListener("click", chooseSort)
 
 function setup() {
@@ -29,7 +28,9 @@ function draw() {
 
 }
 
-function chooseSort() {
+async function chooseSort() {
+    createArray()
+    await sleep(1000)
     value = document.getElementById("type").value
     if (value === "quick-sort") {
         quickSort(0, rectArray.length - 1)
@@ -55,7 +56,7 @@ function createArray() {
         let width = windowWidth / amt
         let height = value
         let x = (windowWidth / amt) * i
-        let y = windowHeight - height
+        let y = windowHeight - height -10
         rectArray.push({
             x: x,
             y: y,
